@@ -27,7 +27,7 @@ class CourrierArrive
     private $received_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Sender", inversedBy="listeCourriersEnvoyes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Correspondant", inversedBy="listeCourriersEnvoyes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $sender;
