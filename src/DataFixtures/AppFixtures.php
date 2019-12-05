@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author bricelab <bricehessou@gmail.com>
+ * @version 0.1
+ */
 
 namespace App\DataFixtures;
 
