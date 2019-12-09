@@ -2,5 +2,7 @@ form.field.login.username: Adresse email
 form.field.login.password: Mot de passe
 form.button.login.signin: Se connecter
 form.field.login.rememberme: Rester connecté
+form.field.locale.submit: Enregistrer
 
-layout.login.title: Connexion !
+layout.login.title: Connexion
+layout.locale.changelocal: Langue
