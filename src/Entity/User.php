@@ -138,6 +138,13 @@ class User implements UserInterface
     private $avatarSize;
 
     /**
+     * @var string
+     * 
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $locale;
+
+    /**
      * @return integer|null
      */
     public function getId(): ?int
@@ -513,6 +520,18 @@ class User implements UserInterface
     public function setAvatarSize($avatarSize) : self
     {
         $this->avatarSize = $avatarSize;
+
+        return $this;
+    }
+
+    public function getLocale(): ?string
+    {
+        return $this->locale;
+    }
+
+    public function setLocale(?string $locale): self
+    {
+        $this->locale = $locale;
 
         return $this;
     }

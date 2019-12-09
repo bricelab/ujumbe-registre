@@ -1,0 +1,6 @@
+form.field.login.username: Adresse email
+form.field.login.password: Mot de passe
+form.button.login.signin: Se connecter
+form.field.login.rememberme: Rester connecté
+
+layout.login.title: Connexion !
