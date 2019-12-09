@@ -7,6 +7,27 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+        <div>
+            {% if locale == 'fr' %}
+                {% trans %}layout.locale.french{% endtrans %}
+            {% else %}
+                {% if route is defined %}
+                    <a href="{{ path("app_change_locale", {locale: 'fr', path: route}) }}">{% trans %}layout.locale.french{% endtrans %}</a>
+                {% else %}
+                    <a href="{{ path("app_change_locale", {locale: 'fr'}) }}">{% trans %}layout.locale.french{% endtrans %}</a>
+                {% endif %}                
+            {% endif %} 
+            | 
+            {% if locale == 'en' %}
+                {% trans %}layout.locale.english{% endtrans %}
+            {% else %}
+                {% if route is defined %}
+                    <a href="{{ path("app_change_locale", {locale: 'en', path: route}) }}">{% trans %}layout.locale.english{% endtrans %}</a>
+                {% else %}
+                    <a href="{{ path("app_change_locale", {locale: 'en'}) }}">{% trans %}layout.locale.english{% endtrans %}</a>
+                {% endif %}                
+            {% endif %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

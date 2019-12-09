@@ -49,6 +49,8 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'locale' => $request->getLocale(),
+            'route' => $request->attributes->get("_route"),
         ]);
     }
 

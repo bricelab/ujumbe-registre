@@ -4,5 +4,16 @@ form.button.login.signin: Se connecter
 form.field.login.rememberme: Rester connecté
 form.field.locale.submit: Enregistrer
 
+form.field.register.email: Adresse email
+form.field.register.password: Mot de passe
+form.field.register.agreeterms: Accepter nos termes
+form.button.register.signup: S'inscrire
+
 layout.login.title: Connexion
 layout.locale.changelocal: Langue
+layout.locale.french: Français
+layout.locale.english: English
+
+layout.register.title: Inscription
+
+message.register.error.agreeterms: Vous devez accepter les termes d'utilisation.

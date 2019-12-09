@@ -1,0 +1,4 @@
+Your password should be at least {{ limit }} characters: Your password should be at least {{ limit }} characters.
+Please enter a password: Please enter a password.
+You should agree to our terms: You should agree to our terms.
+Your password should not exceed {{ limit }} characters: Your password should exceed {{ limit }} characters.

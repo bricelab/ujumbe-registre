@@ -1,0 +1,4 @@
+Your password should be at least {{ limit }} characters: Le mot de pase doit contenir au moins {{ limit }} caractères.
+Please enter a password: Entrer un mot de passe svp.
+You should agree to our terms: Vous devez accepter les termes d'utilisation.
+Your password should not exceed {{ limit }} characters: Le mot de pase ne doit pas excéder {{ limit }} caractères.

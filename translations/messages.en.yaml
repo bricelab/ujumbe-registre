@@ -4,5 +4,19 @@ form.button.login.signin: Sign in
 form.field.login.rememberme: Remember me
 form.field.locale.submit: Save
 
+form.field.register.email: Email address
+form.field.register.password: Password
+form.field.register.agreeterms: Agree terms
+form.button.register.signup: Sign up
+
 layout.login.title: Login
 layout.locale.changelocal: Language
+layout.locale.french: Français
+layout.locale.english: English
+
+layout.register.title: Sign up
+
+message.register.error.password.minmessage.start: Your password should be at least
+message.register.error.password.minmessage.end: characters
+message.register.error.agreeterms: You should agree to our terms.
+Your password should be at least {{ limit }} characters: Your password should be at least {{ limit }} characters

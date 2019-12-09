@@ -19,6 +19,7 @@ class HomeController extends AbstractController
      */
     public function index(Request $request)
     {
+        dump($request->getLocale());
         /**
          * @var FormInterface
          */
@@ -27,8 +28,8 @@ class HomeController extends AbstractController
                 'expanded' => false,
                 'multiple' => false,
                 'choices' => [
-                    'Français' => 'fr',
-                    'English' => 'en',
+                    'layout.locale.french' => 'fr',
+                    'layout.locale.english' => 'en',
                 ],
                 'label' => 'layout.locale.changelocal',
             ])
@@ -44,6 +45,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'form' => $form->createView(),
+            'locale' => $request->getLocale(),
         ]);
     }
 }
