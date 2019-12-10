@@ -8,6 +8,14 @@ form.field.register.email: Adresse email
 form.field.register.password: Mot de passe
 form.field.register.agreeterms: Accepter nos termes
 form.button.register.signup: S'inscrire
+form.field.register.firstname: Prénoms
+form.field.register.lastname: Nom
+form.field.register.country: Pays
+form.field.register.city: Ville
+form.field.register.birthday: Date de naissance
+form.field.register.sexe: Sexe
+form.field.register.sexe.male: Homme
+form.field.register.sexe.female: Femme
 
 layout.login.title: Connexion
 layout.locale.changelocal: Langue
@@ -17,3 +25,5 @@ layout.locale.english: English
 layout.register.title: Inscription
 
 message.register.error.agreeterms: Vous devez accepter les termes d'utilisation.
+
+email.register.welcome: Bienvenue 

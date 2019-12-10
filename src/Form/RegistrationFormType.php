@@ -9,6 +9,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,6 +27,38 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', TextType::class, [
                 'label' => 'form.field.register.email'
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'form.field.register.firstname',
+                'required' => true,
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'form.field.register.lastname',
+                'required' => true,
+            ])
+            ->add('country', CountryType::class, [
+                'label' => 'form.field.register.country',
+                'required' => true,
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'form.field.register.city',
+                'required' => false,
+            ])
+            ->add('birthday', DateType::class, [
+                'label' => 'form.field.register.birthday',
+                'widget' => 'single_text',
+                'choice_translation_domain' => true,
+                'required' => false,
+            ])
+            ->add('sexe', ChoiceType::class, [
+                'label' => 'form.field.register.sexe',
+                'expanded' => false,
+                'multiple' => false,
+                'choices' => [
+                    //'form.field.register.sexe' => null,
+                    'form.field.register.sexe.male' => ''.User::SEXE["MALE"],
+                    'form.field.register.sexe.female' => User::SEXE["FEMALE"],
+                ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'form.field.register.agreeterms',

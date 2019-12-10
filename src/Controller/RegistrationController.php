@@ -7,8 +7,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Events\UserSignupEvent;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +22,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EventDispatcherInterface $dispatcher): Response
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app_profile');
@@ -43,8 +46,12 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // do anything else you need here, like send an email
+           
+            $event = new UserSignupEvent($user, $request);
+            $dispatcher->dispatch($event, UserSignupEvent::NAME);
 
-            return $this->redirectToRoute('app_home');
+
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [

@@ -1,43 +1,74 @@
-{% extends 'base.html.twig' %}
+{% extends 'security.base.html.twig' %}
 
 {% block title %}{% trans %} layout.login.title {% endtrans %}{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
+<form method="post" class="form-signin">
+    {# {% if app.user %}
         <div class="mb-3">
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
-    {% endif %}
+    {% endif %} #}
 
-    <h1 class="h3 mb-3 font-weight-normal">{% trans %} layout.login.title {% endtrans %}</h1>
-    <label for="inputEmail">{% trans %} form.field.login.username {% endtrans %}</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">{% trans %} form.field.login.password {% endtrans %}</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <div class="text-center mb-4">
+        <h1 class="h1 mb-3 font-weight-normal">{% trans %} layout.login.title {% endtrans %}</h1>
+        {# <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> #}
+        <p>
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="form-label-group">
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="{% trans %} form.field.login.username {% endtrans %}" required autofocus>
+        <label for="inputEmail">{% trans %} form.field.login.username {% endtrans %}</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="{% trans %} form.field.login.password {% endtrans %}" required>
+        <label for="inputPassword">{% trans %} form.field.login.password {% endtrans %}</label>
+    </div>
 
     <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
+        value="{{ csrf_token('authenticate') }}"
     >
 
-    {# 
         {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
         See https://symfony.com/doc/current/security/remember_me.html
-        #
+        #}
         <div class="checkbox mb-3">
             <label>
                 <input type="checkbox" name="_remember_me"> {% trans %} form.field.login.rememberme {% endtrans %}
             </label>
+            <a class="float-right" href="{{ path("app_register", {'_locale': locale}) }}">{% trans %} form.button.register.signup {% endtrans %}</a>
         </div>
-     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
         {% trans %} form.button.login.signin {% endtrans %}
     </button>
+    <p class="mt-5 mb-3 text-muted text-center">
+        {% if locale == 'fr' %}
+            {% trans %}layout.locale.french{% endtrans %}
+        {% else %}
+            {% if route is defined %}
+                <a href="{{ path("app_change_locale", {locale: 'fr', path: route}) }}">{% trans %}layout.locale.french{% endtrans %}</a>
+            {% else %}
+                <a href="{{ path("app_change_locale", {locale: 'fr'}) }}">{% trans %}layout.locale.french{% endtrans %}</a>
+            {% endif %}                
+        {% endif %} 
+        | 
+        {% if locale == 'en' %}
+            {% trans %}layout.locale.english{% endtrans %}
+        {% else %}
+            {% if route is defined %}
+                <a href="{{ path("app_change_locale", {locale: 'en', path: route}) }}">{% trans %}layout.locale.english{% endtrans %}</a>
+            {% else %}
+                <a href="{{ path("app_change_locale", {locale: 'en'}) }}">{% trans %}layout.locale.english{% endtrans %}</a>
+            {% endif %}                
+        {% endif %}
+    </p>
 </form>
 {% endblock %}

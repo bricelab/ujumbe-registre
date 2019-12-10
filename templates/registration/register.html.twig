@@ -1,15 +1,91 @@
-{% extends 'base.html.twig' %}
+{% extends 'security.base.html.twig' %}
 
 {% block title %}{% trans %} layout.register.title {% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>{% trans %} layout.register.title {% endtrans %}</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    {{ form_start(registrationForm, {'attr': {'class': 'form-signin'}}) }}
+        <div class="text-center mb-4">
+            <h1 class="h1 mb-3 font-weight-normal">{% trans %} layout.register.title {% endtrans %}</h1>
+            {# <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> #}
+            <p>
+                {# {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %} #}
+            </p>
+        </div>
 
-        <button class="btn">{% trans %} form.button.register.signup {% endtrans %}</button>
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.sexe, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.sexe'}}) }}
+            {# {{ form_label(registrationForm.sexe) }} #}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.firstname'}}) }}
+            {{ form_label(registrationForm.firstname) }}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.lastname'}}) }}
+            {{ form_label(registrationForm.lastname) }}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.birthday, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.birthday'}}) }}
+            {{ form_label(registrationForm.birthday) }}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.email'}}) }}
+            {{ form_label(registrationForm.email) }}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.password'}}) }}
+            {{ form_label(registrationForm.plainPassword) }}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.country, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.country'}}) }}
+            {# {{ form_label(registrationForm.country) }} #}
+        </div>
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.city, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.city'}}) }}
+            {{ form_label(registrationForm.city) }}
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                {{ form_widget(registrationForm.agreeTerms) }} {{ form_label(registrationForm.agreeTerms) }}
+            </label>
+            <a class="float-right" href="{{ path("app_login", {'_locale': locale}) }}">{% trans %} form.button.login.signin {% endtrans %}</a>
+        </div>
+
+        
+
+        <button class="btn btn-lg btn-primary btn-block">{% trans %} form.button.register.signup {% endtrans %}</button>
+
+        <p class="mt-5 mb-3 text-muted text-center">
+            {% if locale == 'fr' %}
+                {% trans %}layout.locale.french{% endtrans %}
+            {% else %}
+                {% if route is defined %}
+                    <a href="{{ path("app_change_locale", {locale: 'fr', path: route}) }}">{% trans %}layout.locale.french{% endtrans %}</a>
+                {% else %}
+                    <a href="{{ path("app_change_locale", {locale: 'fr'}) }}">{% trans %}layout.locale.french{% endtrans %}</a>
+                {% endif %}                
+            {% endif %} 
+            | 
+            {% if locale == 'en' %}
+                {% trans %}layout.locale.english{% endtrans %}
+            {% else %}
+                {% if route is defined %}
+                    <a href="{{ path("app_change_locale", {locale: 'en', path: route}) }}">{% trans %}layout.locale.english{% endtrans %}</a>
+                {% else %}
+                    <a href="{{ path("app_change_locale", {locale: 'en'}) }}">{% trans %}layout.locale.english{% endtrans %}</a>
+                {% endif %}                
+            {% endif %}
+        </p>
     {{ form_end(registrationForm) }}
 {% endblock %}
