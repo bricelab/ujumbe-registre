@@ -7,6 +7,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Scheb\TwoFactorBundle\Model\Email\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,7 +19,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User implements UserInterface
+class User implements UserInterface, TwoFactorInterface, \Serializable
 {
     use TimestampTrait;
 
@@ -148,6 +149,16 @@ class User implements UserInterface
      * @ORM\Column(type="datetimetz", nullable=true)
      */
     private $passwordRequestedAt;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $authCode;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default":false})
+     */
+    private $emailAuthEnabled;
 
     /**
      * @return integer|null
@@ -551,5 +562,81 @@ class User implements UserInterface
         $this->passwordRequestedAt = $passwordRequestedAt;
 
         return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize([
+                $this->id,
+                $this->email,
+                $this->password,
+            ]
+        );
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password
+        ) = unserialize($serialized, ['allowed_classes' => false]);
+
+    }
+
+    public function isEmailAuthEnabled(): bool
+    {
+        return $this->emailAuthEnabled; // This can be a persisted field to switch email code authentication on/off
+    }
+
+    public function getEmailAuthRecipient(): string
+    {
+        return $this->email;
+    }
+
+    public function getEmailAuthCode(): string
+    {
+        return $this->authCode;
+    }
+
+    public function setEmailAuthCode(string $authCode): void
+    {
+        $this->authCode = $authCode;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function hasEmailAuthEnabled(): ?bool
+    {
+        return $this->emailAuthEnabled;
+    }
+
+    /**
+     * @param bool emailAuthEnabled
+     * @return self
+     */
+    public function setEmailAuthEnabled(bool $emailAuthEnabled): self
+    {
+        $this->emailAuthEnabled = $emailAuthEnabled;
+
+        return $this;
+    }
+
+    public function getAuthCode(): ?int
+    {
+        return $this->authCode;
+    }
+
+    public function setAuthCode(?int $authCode): self
+    {
+        $this->authCode = $authCode;
+
+        return $this;
+    }
+
+    public function getEmailAuthEnabled(): ?bool
+    {
+        return $this->emailAuthEnabled;
     }
 }

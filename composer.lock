@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8b2529a925191bfb5f20da7a18a3f7b",
+    "content-hash": "28eaea4d033915b598f14afd759980b6",
     "packages": [
+        {
+            "name": "beberlei/assert",
+            "version": "v3.2.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "99508be011753690fe108ded450f5caaae180cfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/99508be011753690fe108ded450f5caaae180cfa",
+                "reference": "99508be011753690fe108ded450f5caaae180cfa",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan-shim": "*",
+                "phpunit/phpunit": ">=6.0.0 <8"
+            },
+            "suggest": {
+                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "time": "2019-10-10T10:33:57+00:00"
+        },
         {
             "name": "behat/transliterator",
             "version": "v1.2.0",
@@ -1396,6 +1458,61 @@
             "time": "2019-09-17T15:30:40+00:00"
         },
         {
+            "name": "lcobucci/jwt",
+            "version": "3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "^5.7 || ^7.3",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2019-05-24T18:30:49+00:00"
+        },
+        {
             "name": "lorenzo/pinky",
             "version": "1.0.5",
             "source": {
@@ -1640,6 +1757,68 @@
                 "service proxies"
             ],
             "time": "2019-08-10T08:37:15+00:00"
+        },
+        {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2",
+                "reference": "47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6|^7",
+                "vimeo/psalm": "^1|^2|^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "time": "2019-11-06T19:20:29+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1983,6 +2162,74 @@
             "time": "2019-11-01T11:05:21+00:00"
         },
         {
+            "name": "scheb/two-factor-bundle",
+            "version": "v4.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scheb/two-factor-bundle.git",
+                "reference": "eadac02014233ab45dac215d42fd06aaf629b09a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scheb/two-factor-bundle/zipball/eadac02014233ab45dac215d42fd06aaf629b09a",
+                "reference": "eadac02014233ab45dac215d42fd06aaf629b09a",
+                "shasum": ""
+            },
+            "require": {
+                "lcobucci/jwt": "^3.2",
+                "paragonie/constant_time_encoding": "^2.2",
+                "php": "^7.1.3",
+                "spomky-labs/otphp": "^9.1|^10.0",
+                "symfony/config": "^3.4|^4.0|^5.0",
+                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+                "symfony/event-dispatcher": "^3.4|^4.0|^5.0",
+                "symfony/framework-bundle": "^3.4|^4.0|^5.0",
+                "symfony/http-foundation": "^3.4|^4.0|^5.0",
+                "symfony/http-kernel": "^3.4|^4.0|^5.0",
+                "symfony/property-access": "^3.4|^4.0|^5.0",
+                "symfony/security-bundle": "^3.4|^4.0|^5.0",
+                "symfony/twig-bundle": "^3.4|^4.0|^5.0"
+            },
+            "require-dev": {
+                "doctrine/lexer": "^1.0.1",
+                "doctrine/orm": "^2.6",
+                "escapestudios/symfony2-coding-standard": "^3.9",
+                "phpunit/phpunit": "^7.0|^8.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "swiftmailer/swiftmailer": "^6.0",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Scheb\\TwoFactorBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Scheb",
+                    "email": "me@christianscheb.de"
+                }
+            ],
+            "description": "Provides two-factor authentication for Symfony applications",
+            "homepage": "https://github.com/scheb/two-factor-bundle",
+            "keywords": [
+                "Authentication",
+                "security",
+                "symfony",
+                "two-factor",
+                "two-step"
+            ],
+            "time": "2019-12-08T16:03:05+00:00"
+        },
+        {
             "name": "sensio/framework-extra-bundle",
             "version": "v5.5.1",
             "source": {
@@ -2059,6 +2306,77 @@
                 "controllers"
             ],
             "time": "2019-10-16T18:54:45+00:00"
+        },
+        {
+            "name": "spomky-labs/otphp",
+            "version": "v10.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Spomky-Labs/otphp.git",
+                "reference": "7c4e59c6a1cfe7798e5bf33cca6e5e5cdc5df9ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Spomky-Labs/otphp/zipball/7c4e59c6a1cfe7798e5bf33cca6e5e5cdc5df9ff",
+                "reference": "7c4e59c6a1cfe7798e5bf33cca6e5e5cdc5df9ff",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "ext-mbstring": "*",
+                "paragonie/constant_time_encoding": "^2.0",
+                "php": "^7.2|^8.0",
+                "thecodingmachine/safe": "^0.1.14"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpstan/phpstan": "^0.11",
+                "phpstan/phpstan-beberlei-assert": "^0.11.0",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "phpunit/phpunit": "^8.0",
+                "thecodingmachine/phpstan-safe-rule": "^0.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v10.0": "10.0.x-dev",
+                    "v9.0": "9.0.x-dev",
+                    "v8.3": "8.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OTPHP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/Spomky-Labs/otphp/contributors"
+                }
+            ],
+            "description": "A PHP library for generating one time passwords according to RFC 4226 (HOTP Algorithm) and the RFC 6238 (TOTP Algorithm) and compatible with Google Authenticator",
+            "homepage": "https://github.com/Spomky-Labs/otphp",
+            "keywords": [
+                "FreeOTP",
+                "RFC 4226",
+                "RFC 6238",
+                "google authenticator",
+                "hotp",
+                "otp",
+                "totp"
+            ],
+            "time": "2019-07-30T14:43:55+00:00"
         },
         {
             "name": "symfony/asset",
@@ -6012,6 +6330,138 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2019-11-12T14:51:11+00:00"
+        },
+        {
+            "name": "thecodingmachine/safe",
+            "version": "v0.1.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/safe.git",
+                "reference": "4e8f840f0a0a2ea167813c3994a7fc527c3c2182"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/safe/zipball/4e8f840f0a0a2ea167813c3994a7fc527c3c2182",
+                "reference": "4e8f840f0a0a2ea167813c3994a7fc527c3c2182",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.10.3",
+                "squizlabs/php_codesniffer": "^3.2",
+                "thecodingmachine/phpstan-strict-rules": "^0.10.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Safe\\": [
+                        "lib/",
+                        "generated/"
+                    ]
+                },
+                "files": [
+                    "generated/apache.php",
+                    "generated/apc.php",
+                    "generated/apcu.php",
+                    "generated/array.php",
+                    "generated/bzip2.php",
+                    "generated/classobj.php",
+                    "generated/com.php",
+                    "generated/cubrid.php",
+                    "generated/curl.php",
+                    "generated/datetime.php",
+                    "generated/dir.php",
+                    "generated/eio.php",
+                    "generated/errorfunc.php",
+                    "generated/exec.php",
+                    "generated/fileinfo.php",
+                    "generated/filesystem.php",
+                    "generated/filter.php",
+                    "generated/fpm.php",
+                    "generated/ftp.php",
+                    "generated/funchand.php",
+                    "generated/gmp.php",
+                    "generated/gnupg.php",
+                    "generated/hash.php",
+                    "generated/ibase.php",
+                    "generated/ibmDb2.php",
+                    "generated/iconv.php",
+                    "generated/image.php",
+                    "generated/imap.php",
+                    "generated/info.php",
+                    "generated/ingres-ii.php",
+                    "generated/inotify.php",
+                    "generated/json.php",
+                    "generated/ldap.php",
+                    "generated/libevent.php",
+                    "generated/libxml.php",
+                    "generated/lzf.php",
+                    "generated/mailparse.php",
+                    "generated/mbstring.php",
+                    "generated/misc.php",
+                    "generated/msql.php",
+                    "generated/mssql.php",
+                    "generated/mysql.php",
+                    "generated/mysqli.php",
+                    "generated/mysqlndMs.php",
+                    "generated/mysqlndQc.php",
+                    "generated/network.php",
+                    "generated/oci8.php",
+                    "generated/opcache.php",
+                    "generated/openssl.php",
+                    "generated/outcontrol.php",
+                    "generated/password.php",
+                    "generated/pcntl.php",
+                    "generated/pcre.php",
+                    "generated/pdf.php",
+                    "generated/pgsql.php",
+                    "generated/posix.php",
+                    "generated/ps.php",
+                    "generated/pspell.php",
+                    "generated/readline.php",
+                    "generated/rrd.php",
+                    "generated/sem.php",
+                    "generated/session.php",
+                    "generated/shmop.php",
+                    "generated/simplexml.php",
+                    "generated/sockets.php",
+                    "generated/sodium.php",
+                    "generated/solr.php",
+                    "generated/spl.php",
+                    "generated/sqlsrv.php",
+                    "generated/ssdeep.php",
+                    "generated/ssh2.php",
+                    "generated/stats.php",
+                    "generated/stream.php",
+                    "generated/strings.php",
+                    "generated/swoole.php",
+                    "generated/uodbc.php",
+                    "generated/uopz.php",
+                    "generated/url.php",
+                    "generated/var.php",
+                    "generated/xdiff.php",
+                    "generated/xml.php",
+                    "generated/xmlrpc.php",
+                    "generated/yaml.php",
+                    "generated/yaz.php",
+                    "generated/zip.php",
+                    "generated/zlib.php",
+                    "lib/special_cases.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP core functions that throw exceptions instead of returning FALSE on error",
+            "time": "2019-06-25T08:45:33+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

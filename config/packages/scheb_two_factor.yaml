@@ -1,0 +1,14 @@
+# See the configuration reference at https://github.com/scheb/two-factor-bundle/blob/master/Resources/doc/configuration.md
+scheb_two_factor:
+    security_tokens:
+        #- Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken
+        # If you're using guard-based authentication, you have to use this one:
+        - Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken
+    
+    email:
+        digits: 6
+        enabled: true
+        sender_email: '%from_mail%'
+        mailer: App\Services\Mailer
+        code_generator: scheb_two_factor.security.email.default_code_generator
+        # sender_name: John Doe  # Optional

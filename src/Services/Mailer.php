@@ -1,13 +1,15 @@
 <?php
 namespace App\Services;
 
+use Scheb\TwoFactorBundle\Mailer\AuthCodeMailerInterface;
+use Scheb\TwoFactorBundle\Model\Email\TwoFactorInterface;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Twig\Environment;
 
-class Mailer
+class Mailer implements AuthCodeMailerInterface
 {
     private $engine;
     private $mailer;
@@ -30,7 +32,7 @@ class Mailer
             ->replyTo($from)
             ->priority($priority);
         
-            if (!empty($text)) {
+        if (!empty($text)) {
             $mail->text($text);
         }
             
@@ -62,5 +64,17 @@ class Mailer
             ->priority($priority);    
 
         $this->mailer->send($mail);
+    }
+
+    public function sendAuthCode(TwoFactorInterface $user): void
+    {
+        $authCode = $user->getEmailAuthCode();
+
+        $body = $this->createBodyMail("emails/2fa.html.twig", [
+            'authCode' => $authCode,
+        ]);
+
+        $this->sendEmail($this->from, $user->getEmailAuthRecipient(), "Two factor authentication", $body);
+
     }
 }
