@@ -18,7 +18,8 @@ class HomeController extends AbstractController
      * @Route("/", name="home")
      */
     public function index(Request $request)
-    {        
+    {
+        //dump($request);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'locale' => $request->getLocale(),

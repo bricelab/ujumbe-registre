@@ -140,9 +140,14 @@ class User implements UserInterface
     /**
      * @var string
      * 
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $locale;
+    private $token;
+
+    /**
+     * @ORM\Column(type="datetimetz", nullable=true)
+     */
+    private $passwordRequestedAt;
 
     /**
      * @return integer|null
@@ -524,14 +529,26 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getLocale(): ?string
+    public function getToken(): ?string
     {
-        return $this->locale;
+        return $this->token;
     }
 
-    public function setLocale(?string $locale): self
+    public function setToken(?string $token): self
     {
-        $this->locale = $locale;
+        $this->token = $token;
+
+        return $this;
+    }
+
+    public function getPasswordRequestedAt(): ?\DateTimeInterface
+    {
+        return $this->passwordRequestedAt;
+    }
+
+    public function setPasswordRequestedAt(?\DateTimeInterface $passwordRequestedAt): self
+    {
+        $this->passwordRequestedAt = $passwordRequestedAt;
 
         return $this;
     }

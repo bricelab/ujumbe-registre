@@ -6,9 +6,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
-class UserSignupEvent extends Event
+class UserEvent extends Event
 {
-    public const NAME = "user.signed_up";
+    public const SIGNED_UP = "user.signed_up";
+
+    public const PASSWORD_RESET_REQUESTED = "user.password_reset_requested";
+
+    public const PASSWORD_RESETED = "user.password_reseted";
+
+    public const PASSWORD_NOT_RESETED_IN_TIME = "user.password_not_reseted_in_time";
 
     protected $user;
     protected $request;

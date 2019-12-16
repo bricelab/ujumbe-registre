@@ -13,21 +13,21 @@
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %} #}
             </p>
-        </div>
+        </div>{# 
 
         <div class="form-label-group">
             {{ form_widget(registrationForm.sexe, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.sexe'}}) }}
-            {# {{ form_label(registrationForm.sexe) }} #}
+            {# {{ form_label(registrationForm.sexe) }} #
+        </div> #}
+
+        <div class="form-label-group">
+            {{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.lastname'}}) }}
+            {{ form_label(registrationForm.lastname) }}
         </div>
 
         <div class="form-label-group">
             {{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.firstname'}}) }}
             {{ form_label(registrationForm.firstname) }}
-        </div>
-
-        <div class="form-label-group">
-            {{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.lastname'}}) }}
-            {{ form_label(registrationForm.lastname) }}
         </div>
 
         <div class="form-label-group">
@@ -45,26 +45,28 @@
             {{ form_label(registrationForm.plainPassword) }}
         </div>
 
-        <div class="form-label-group">
+        {# <div class="form-label-group">
             {{ form_widget(registrationForm.country, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.country'}}) }}
-            {# {{ form_label(registrationForm.country) }} #}
+            {# {{ form_label(registrationForm.country) }} #
         </div>
 
         <div class="form-label-group">
             {{ form_widget(registrationForm.city, {'attr': {'class': 'form-control', 'placeholder': 'form.field.register.city'}}) }}
             {{ form_label(registrationForm.city) }}
-        </div>
+        </div> #}
 
         <div class="checkbox mb-3">
-            <label>
-                {{ form_widget(registrationForm.agreeTerms) }} {{ form_label(registrationForm.agreeTerms) }}
+            <label class="float-right">
+                {# {{ form_widget(registrationForm.agreeTerms) }} {{ form_label(registrationForm.agreeTerms) }} #}
+                <a class="float-right" href="{{ path("app_login", {'_locale': locale}) }}">{% trans %} form.button.login.signin {% endtrans %}</a>
             </label>
-            <a class="float-right" href="{{ path("app_login", {'_locale': locale}) }}">{% trans %} form.button.login.signin {% endtrans %}</a>
+            
         </div>
 
         
 
         <button class="btn btn-lg btn-primary btn-block">{% trans %} form.button.register.signup {% endtrans %}</button>
+
 
         <p class="mt-5 mb-3 text-muted text-center">
             {% if locale == 'fr' %}

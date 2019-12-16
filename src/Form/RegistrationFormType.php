@@ -36,21 +36,21 @@ class RegistrationFormType extends AbstractType
                 'label' => 'form.field.register.lastname',
                 'required' => true,
             ])
-            ->add('country', CountryType::class, [
+            /* ->add('country', CountryType::class, [
                 'label' => 'form.field.register.country',
                 'required' => true,
             ])
             ->add('city', TextType::class, [
                 'label' => 'form.field.register.city',
                 'required' => false,
-            ])
+            ]) */
             ->add('birthday', DateType::class, [
                 'label' => 'form.field.register.birthday',
                 'widget' => 'single_text',
                 'choice_translation_domain' => true,
                 'required' => false,
             ])
-            ->add('sexe', ChoiceType::class, [
+            /* ->add('sexe', ChoiceType::class, [
                 'label' => 'form.field.register.sexe',
                 'expanded' => false,
                 'multiple' => false,
@@ -59,8 +59,8 @@ class RegistrationFormType extends AbstractType
                     'form.field.register.sexe.male' => ''.User::SEXE["MALE"],
                     'form.field.register.sexe.female' => User::SEXE["FEMALE"],
                 ],
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
+            ]) */
+            /* ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'form.field.register.agreeterms',
                 'mapped' => false,
                 'constraints' => [
@@ -68,7 +68,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms',
                     ]),
                 ],
-            ])
+            ]) */
             ->add('plainPassword', PasswordType::class, [
                 'label' => 'form.field.register.password',
                 // instead of being set onto the object directly,

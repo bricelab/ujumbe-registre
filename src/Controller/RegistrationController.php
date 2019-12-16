@@ -7,7 +7,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Events\UserSignupEvent;
+use App\Events\UserEvent;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -47,8 +47,8 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
            
-            $event = new UserSignupEvent($user, $request);
-            $dispatcher->dispatch($event, UserSignupEvent::NAME);
+            $event = new UserEvent($user, $request);
+            $dispatcher->dispatch($event, UserEvent::SIGNED_UP);
 
 
             return $this->redirectToRoute('app_login');
