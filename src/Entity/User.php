@@ -23,11 +23,6 @@ class User implements UserInterface, TwoFactorInterface, \Serializable
 {
     use TimestampTrait;
 
-    public const SEXE = [
-        "MALE" => "MASCULIN",
-        "FEMALE" => "FEMININ",
-    ];
-
     /**
      * @var integer Identifier
      * 
@@ -45,7 +40,7 @@ class User implements UserInterface, TwoFactorInterface, \Serializable
     private $email;
 
     /**
-     * @var array Email adresse and username
+     * @var array 
      * 
      * @ORM\Column(type="json")
      */
@@ -106,7 +101,7 @@ class User implements UserInterface, TwoFactorInterface, \Serializable
     /**
      * @var string
      * 
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sexe;
 
@@ -159,6 +154,11 @@ class User implements UserInterface, TwoFactorInterface, \Serializable
      * @ORM\Column(type="boolean", nullable=true, options={"default":false})
      */
     private $emailAuthEnabled;
+
+    public function __construct()
+    {
+        //$this->emailAuthEnabled = false;
+    }
 
     /**
      * @return integer|null

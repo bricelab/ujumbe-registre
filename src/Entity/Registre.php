@@ -38,31 +38,40 @@ class Registre
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Secretariat", inversedBy="listeRegistres")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Secretariat", inversedBy="listeRegistres", cascade={"persist", "remove", "merge"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $secretariat;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeRegistre")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CourrierArrive", mappedBy="registre")
+     * @ORM\Column(type="string", length=255)
      */
-    private $listeCourriersArrives;
+    private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\CourrierDepart", mappedBy="registre")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $listeCourriersDeparts;
+    private $previousStatus;
+
+    /**
+     * ORM\OneToMany(targetEntity="App\Entity\CourrierArrive", mappedBy="registre")
+     */
+    //private $listeCourriersArrives;
+
+    /**
+     * ORM\OneToMany(targetEntity="App\Entity\CourrierDepart", mappedBy="registre")
+     */
+    //private $listeCourriersDeparts;
 
     public function __construct()
     {
-        $this->listeCourriersArrives = new ArrayCollection();
-        $this->listeCourriersDeparts = new ArrayCollection();
+        // $this->listeCourriersArrives = new ArrayCollection();
+        // $this->listeCourriersDeparts = new ArrayCollection();
     }
 
     public function __toString()
@@ -123,22 +132,46 @@ class Registre
         return $this;
     }
 
-    public function getType(): ?TypeRegistre
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(?TypeRegistre $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getPreviousStatus(): ?string
+    {
+        return $this->previousStatus;
+    }
+
+    public function setPreviousStatus(?string $previousStatus): self
+    {
+        $this->previousStatus = $previousStatus;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|CourrierArrive[]
+     * return Collection|CourrierArrive[]
      */
-    public function getListeCourriersArrives(): Collection
+    /* public function getListeCourriersArrives(): Collection
     {
         return $this->listeCourriersArrives;
     }
@@ -152,7 +185,7 @@ class Registre
 
         return $this;
     }
-
+ 
     public function removeListeCourriersArrife(CourrierArrive $listeCourriersArrife): self
     {
         if ($this->listeCourriersArrives->contains($listeCourriersArrife)) {
@@ -165,11 +198,11 @@ class Registre
 
         return $this;
     }
-
+*/
     /**
-     * @return Collection|CourrierDepart[]
+     * return Collection|CourrierDepart[]
      */
-    public function getListeCourriersDeparts(): Collection
+    /* public function getListeCourriersDeparts(): Collection
     {
         return $this->listeCourriersDeparts;
     }
@@ -195,5 +228,5 @@ class Registre
         }
 
         return $this;
-    }
+    } */
 }

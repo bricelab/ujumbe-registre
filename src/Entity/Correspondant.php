@@ -58,14 +58,20 @@ class Correspondant
     private $listeCourriersEnvoyes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\CourrierDepart", mappedBy="recipients")
+     * @ORM\ManyToMany(targetEntity="App\Entity\CourrierDepart", mappedBy="recipients", fetch="EXTRA_LAZY")
      */
     private $listeCourriersRecus;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Secretariat", inversedBy="correspondants", cascade={"persist", "remove", "merge"})
+     */
+    private $secretariats;
 
     public function __construct()
     {
         $this->listeCourriersEnvoyes = new ArrayCollection();
         $this->listeCourriersRecus = new ArrayCollection();
+        $this->secretariats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -199,6 +205,32 @@ class Correspondant
         if ($this->listeCourriersRecus->contains($listeCourriersRecus)) {
             $this->listeCourriersRecus->removeElement($listeCourriersRecus);
             $listeCourriersRecus->removeRecipient($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Secretariat[]
+     */
+    public function getSecretariats(): Collection
+    {
+        return $this->secretariats;
+    }
+
+    public function addSecretariat(Secretariat $secretariat): self
+    {
+        if (!$this->secretariats->contains($secretariat)) {
+            $this->secretariats[] = $secretariat;
+        }
+
+        return $this;
+    }
+
+    public function removeSecretariat(Secretariat $secretariat): self
+    {
+        if ($this->secretariats->contains($secretariat)) {
+            $this->secretariats->removeElement($secretariat);
         }
 
         return $this;

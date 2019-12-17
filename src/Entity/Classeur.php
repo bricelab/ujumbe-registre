@@ -42,6 +42,12 @@ class Classeur
      */
     private $listeCourriersDeparts;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Secretariat", inversedBy="classeurs", cascade={"persist", "remove", "merge"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $secretariat;
+
     public function __construct()
     {
         $this->listeCourriersArrives = new ArrayCollection();
@@ -135,6 +141,18 @@ class Classeur
                 $listeCourriersDepart->setClasseur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSecretariat(): ?Secretariat
+    {
+        return $this->secretariat;
+    }
+
+    public function setSecretariat(?Secretariat $secretariat): self
+    {
+        $this->secretariat = $secretariat;
 
         return $this;
     }

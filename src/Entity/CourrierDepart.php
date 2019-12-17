@@ -29,7 +29,7 @@ class CourrierDepart
     private $send_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Correspondant", inversedBy="listeCourriersRecus")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Correspondant", inversedBy="listeCourriersRecus", cascade={"persist", "remove", "merge"})
      * @ORM\JoinTable(name="destinataires_courrier_depart", schema="gestion_registre")
      */
     private $recipients;

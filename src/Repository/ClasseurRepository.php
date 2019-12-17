@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Classeur;
+use App\Entity\Secretariat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\DBAL\Types\Type;
 
 /**
  * @method Classeur|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,18 @@ class ClasseurRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Classeur::class);
+    }
+
+    public function findAllBySecretariat(Secretariat $secretariat)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.secretariat = :secretariat')
+            ->setParameter('secretariat', $secretariat)
+            ->orderBy('c.id', 'ASC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**

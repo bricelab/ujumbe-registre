@@ -38,13 +38,25 @@ class Secretariat
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Registre", mappedBy="secretariat")
+     * @ORM\OneToMany(targetEntity="App\Entity\Registre", mappedBy="secretariat", fetch="EXTRA_LAZY")
      */
     private $listeRegistres;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Classeur", mappedBy="secretariat")
+     */
+    private $classeurs;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Correspondant", mappedBy="secretariats")
+     */
+    private $correspondants;
 
     public function __construct()
     {
         $this->listeRegistres = new ArrayCollection();
+        $this->classeurs = new ArrayCollection();
+        $this->correspondants = new ArrayCollection();
     }
 
     public function __toString()
@@ -119,6 +131,65 @@ class Secretariat
             if ($listeRegistre->getSecretariat() === $this) {
                 $listeRegistre->setSecretariat(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Classeur[]
+     */
+    public function getClasseurs(): Collection
+    {
+        return $this->classeurs;
+    }
+
+    public function addClasseur(Classeur $classeur): self
+    {
+        if (!$this->classeurs->contains($classeur)) {
+            $this->classeurs[] = $classeur;
+            $classeur->setSecretariat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClasseur(Classeur $classeur): self
+    {
+        if ($this->classeurs->contains($classeur)) {
+            $this->classeurs->removeElement($classeur);
+            // set the owning side to null (unless already changed)
+            if ($classeur->getSecretariat() === $this) {
+                $classeur->setSecretariat(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Correspondant[]
+     */
+    public function getCorrespondants(): Collection
+    {
+        return $this->correspondants;
+    }
+
+    public function addCorrespondant(Correspondant $correspondant): self
+    {
+        if (!$this->correspondants->contains($correspondant)) {
+            $this->correspondants[] = $correspondant;
+            $correspondant->addSecretariat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCorrespondant(Correspondant $correspondant): self
+    {
+        if ($this->correspondants->contains($correspondant)) {
+            $this->correspondants->removeElement($correspondant);
+            $correspondant->removeSecretariat($this);
         }
 
         return $this;

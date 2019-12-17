@@ -32,27 +32,33 @@ trait CourrierTrait
     private $objet;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCourrier")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCourrier", cascade={"persist", "remove", "merge"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", cascade={"persist", "remove", "merge"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Classeur", inversedBy="listeCourriersArrives")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Classeur", inversedBy="listeCourriersArrives", cascade={"persist", "remove", "merge"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $classeur;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Registre", inversedBy="listeCourriersArrives")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Registre", inversedBy="listeCourriersArrives", cascade={"persist", "remove", "merge"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $registre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $status;
 
     /**
      * getChrono
@@ -151,6 +157,18 @@ trait CourrierTrait
     public function setRegistre(?Registre $registre): self
     {
         $this->registre = $registre;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
